@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KBD Scooters — Продажа, Прокат, Сервис в Кипре</title>
+    <meta name="description" content="KBD Scooters — Продажа, прокат и сервисный центр электроскутеров на Кипре.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --red: #e50914;
+            --red-hover: #ff2b2b;
+            --black: #0a0a0a;
+            --dark: #121212;
+            --gray: #1f1f1f;
+            --text-light: #ffffff;
+            --text-muted: #a0a0a5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--black);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Шапка сайта */
+        header {
+            background-color: rgba(10, 10, 10, 0.95);
+            padding: 15px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            border-radius: 50%;
+        }
+
+        .logo-text {
+            font-family: 'Oswald', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo-text span {
+            color: var(--red);
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--red);
+        }
+
+        /* Баннер */
+        .hero {
+            margin-top: 80px;
+            padding: 30px 5% 10px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-container {
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .hero-banner-img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(229, 9, 20, 0.15);
+        }
+
+        /* Заголовки */
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 36px;
+            text-align: center;
+            margin: 50px 0 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title span {
+            color: var(--red);
+        }
+
+        /* Сетка Услуг: Продажа, Прокат, Сервис */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 0 5%;
+            max-width: 1200px;
+            margin: 0 auto 50px;
+        }
+
+        .service-card {
+            background-color: var(--gray);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(229, 9, 20, 0.4);
+        }
+
+        .service-img-placeholder {
+            width: 100%;
+            height: 260px;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+        }
+
+        .service-img-placeholder img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .service-info {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 24px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .service-desc {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        /* Кнопки */
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--red);
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: background-color 0.2s;
+            gap: 10px;
+            text-transform: uppercase;
+            font-size: 13px;
+        }
+
+        .btn-action:hover {
+            background-color: var(--red-hover);
+        }
+
+        .btn-center-container {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--text-light);
+            color: var(--text-light);
+            cursor: pointer;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--text-light);
+            color: var(--black);
+        }
+
+        /* Блок отзывов */
+        .reviews-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        .review-card {
+            background-color: var(--gray);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--red);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .review-stars {
+            color: #ffcc00;
+        }
+
+        /* Скрытые отзывы */
+        .hidden-reviews {
+            display: none;
+        }
+
+        .hidden-reviews.show {
+            display: block;
+        }
+
+        footer {
+            background-color: #050505;
+            padding: 30px 5%;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .whatsapp-icon {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 15px 3%; }
+            nav a { margin-left: 10px; font-size: 13px; }
+            .section-title { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка -->
+    <header>
+        <div class="logo-container">
+            <img src="logo_3.jpg" alt="KBD Scooters Logo" class="logo-img">
+            <div class="logo-text">KBD <span>SCOOTERS</span></div>
+        </div>
+        <nav>
+            <a href="#services">Услуги</a>
+            <a href="#reviews">Отзывы</a>
+        </nav>
+    </header>
+
+    <!-- Промо-Баннер -->
+    <section class="hero">
+        <div class="hero-container">
+            <img src="promo_banner_3.jpg" alt="KBD Scooters Banner" class="hero-banner-img">
+        </div>
+    </section>
+
+    <!-- Секция: Продажа, Прокат, Сервис -->
+    <section id="services">
+        <h2 class="section-title">Наши услуги / <span>Our Services</span></h2>
+        
+        <div class="services-grid">
+            <!-- Карточка 1: ПРОДАЖА -->
+            <div class="service-card">
+                <div class="service-img-placeholder">
+                    <img src="scooter_two_seats_3.jpg" alt="Продажа Электроскутеров">
+                </div>
+                <div class="service-info">
+                    <div>
+                        <h3 class="service-name">Продажа / Sale</h3>
+                        <p class="service-desc">Широкий выбор надежных трехколесных и двухместных электроскутеров KBD. Прямые поставки, официальная гарантия, тест-драйв перед покупкой и помощь в подборе идеальной модели под ваши задачи.</p>
+                    </div>
+                    <a href="https://wa.me/35796215545?text=Здравствуйте!%20Меня%20интересует%20покупка%20электроскутера." target="_blank" class="btn-action">
+                        <svg class="whatsapp-icon" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.66.986 3.288 1.479 5.357 1.48 5.31 0 9.632-4.305 9.635-9.606.002-2.569-1.001-4.985-2.822-6.806C16.993 2.41 14.582 1.406 12.01 1.405c-5.313 0-9.636 4.306-9.639 9.609-.001 2.112.551 3.75 1.567 5.395L2.95 21.04l4.81-1.258zM17.43 14.15c-.302-.152-1.793-.884-2.071-.984-.279-.101-.482-.151-.684.152-.203.304-.787.984-.965 1.186-.177.202-.355.228-.658.076-.301-.152-1.274-.469-2.426-1.496-.897-.8-1.502-1.788-1.679-2.091-.178-.303-.019-.467.132-.619.136-.137.303-.354.455-.53.152-.177.202-.303.303-.506.102-.202.051-.38-.025-.531-.076-.152-.684-1.65-.938-2.26-.247-.594-.499-.514-.684-.523-.176-.009-.38-.01-.583-.01-.203 0-.533.076-.812.379-.279.304-1.065 1.043-1.065 2.543s1.09 2.951 1.242 3.153c.152.202 2.144 3.273 5.193 4.59.724.314 1.29.502 1.735.643.727.23 1.39.198 1.912.12.582-.087 1.794-.733 2.048-1.442.254-.709.254-1.314.178-1.442-.076-.127-.279-.203-.582-.355z"/></svg>
+                        Купить / Купить
+                    </a>
+                </div>
+            </div>
+
+            <!-- Карточка 2: ПРОКАТ -->
+            <div class="service-card">
+                <div class="service-img-placeholder">
+                    <img src="scooter_city_3.jpg" alt="Прокат Электроскутеров">
+                </div>
+                <div class="service-info">
+                    <div>
+                        <h3 class="service-name">Прокат / Rental</h3>
+                        <p class="service-desc">Почасовая, посуточная и долгосрочная аренда комфортных скутеров. Доставка прямо к вашему отелю или апартаментам на Кипре. Идеальный способ передвижения без пробок и проблем с парковкой.</p>
+                    </div>
+                    <a href="https://wa.me/35796215545?text=Здравствуйте!%20Я%20хочу%20арендовать%20электроскутер." target="_blank" class="btn-action">
+                        <svg class="whatsapp-icon" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.66.986 3.288 1.479 5.357 1.48 5.31 0 9.632-4.305 9.635-9.606.002-2.569-1.001-4.985-2.822-6.806C16.993 2.41 14.582 1.406 12.01 1.405c-5.313 0-9.636 4.306-9.639 9.609-.001 2.112.551 3.75 1.567 5.395L2.95 21.04l4.81-1.258zM17.43 14.15c-.302-.152-1.793-.884-2.071-.984-.279-.101-.482-.151-.684.152-.203.304-.787.984-.965 1.186-.177.202-.355.228-.658.076-.301-.152-1.274-.469-2.426-1.496-.897-.8-1.502-1.788-1.679-2.091-.178-.303-.019-.467.132-.619.136-.137.303-.354.455-.53.152-.177.202-.303.303-.506.102-.202.051-.38-.025-.531-.076-.152-.684-1.65-.938-2.26-.247-.594-.499-.514-.684-.523-.176-.009-.38-.01-.583-.01-.203 0-.533.076-.812.379-.279.304-1.065 1.043-1.065 2.543s1.09 2.951 1.242 3.153c.152.202 2.144 3.273 5.193 4.59.724.314 1.29.502 1.735.643.727.23 1.39.198 1.912.12.582-.087 1.794-.733 2.048-1.442.254-.709.254-1.314.178-1.442-.076-.127-.279-.203-.582-.355z"/></svg>
+                        Забронировать / Book
+                    </a>
+                </div>
+            </div>
+
+            <!-- Карточка 3: СЕРВИС -->
+            <div class="service-card">
+                <div class="service-img-placeholder">
+                    <img src="scooter_comfort_3.jpg" alt="Сервисный центр Электроскутеров">
+                </div>
+                <div class="service-info">
+                    <div>
+                        <h3 class="service-name">Сервис / Repair</h3>
+                        <p class="service-desc">Профессиональное техническое обслуживание, диагностика, качественный ремонт электрики и замена аккумуляторов. Собственный склад оригинальных запчастей и опытные мастера.</p>
+                    </div>
+                    <a href="https://wa.me/35796215545?text=Здравствуйте!%20Мне%20нужен%20ремонт/сервис%20электроскутера." target="_blank" class="btn-action">
+                        <svg class="whatsapp-icon" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.66.986 3.288 1.479 5.357 1.48 5.31 0 9.632-4.305 9.635-9.606.002-2.569-1.001-4.985-2.822-6.806C16.993 2.41 14.582 1.406 12.01 1.405c-5.313 0-9.636 4.306-9.639 9.609-.001 2.112.551 3.75 1.567 5.395L2.95 21.04l4.81-1.258zM17.43 14.15c-.302-.152-1.793-.884-2.071-.984-.279-.101-.482-.151-.684.152-.203.304-.787.984-.965 1.186-.177.202-.355.228-.658.076-.301-.152-1.274-.469-2.426-1.496-.897-.8-1.502-1.788-1.679-2.091-.178-.303-.019-.467.132-.619.136-.137.303-.354.455-.53.152-.177.202-.303.303-.506.102-.202.051-.38-.025-.531-.076-.152-.684-1.65-.938-2.26-.247-.594-.499-.514-.684-.523-.176-.009-.38-.01-.583-.01-.203 0-.533.076-.812.379-.279.304-1.065 1.043-1.065 2.543s1.09 2.951 1.242 3.153c.152.202 2.144 3.273 5.193 4.59.724.314 1.29.502 1.735.643.727.23 1.39.198 1.912.12.582-.087 1.794-.733 2.048-1.442.254-.709.254-1.314.178-1.442-.076-.127-.279-.203-.582-.355z"/></svg>
+                        В Сервис / Service
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция: Отзывы -->
+    <section id="reviews">
+        <h2 class="section-title">Отзывы / <span>Reviews</span></h2>
+        
+        <div class="reviews-container">
+            <!-- Первые 3 видимых отзыва -->
+            <div class="review-card">
+                <div class="review-header">
+                    <span>Алексей П.</span>
+                    <span class="review-stars">★★★★★</span>
+                </div>
+                <p>Брали трехколесный скутер в прокат на 3 дня. Отличный сервис! Привезли прямо к отелю в Пафосе, все объяснили. Скутер очень устойчивый, для местных дорог самое то.</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <span>Helen M.</span>
+                    <span class="review-stars">★★★★★</span>
+                </div>
+                <p>Great service! We rented KBD Quad Comfort for my grandfather. He was absolutely happy, the seat is very comfortable and soft. Highly recommended!</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <span>Дмитрий</span>
+                    <span class="review-stars">★★★★★</span>
+                </div>
+                <p>Купил здесь KBD Family Double для поездок с детьми. Отличная консультация, сделали тест-драйв, доставили бесплатно. Скутер мощный, тянет отлично!</p>
+            </div>
+
+            <!-- Дополнительные отзывы, открывающиеся по кнопке -->
+            <div class="hidden-reviews" id="moreReviews">
+                <div class="review-card">
+                    <div class="review-header">
+                        <span>Светлана</span>
+                        <span class="review-stars">★★★★★</span>
+                    </div>
+                    <p>Обращалась в их сервис для замены аккумулятора. Сделали все за пару часов, цена адекватная, мастер очень толковый. Спасибо!</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <span>John K.</span>
+                        <span class="review-stars">★★★★★</span>
+                    </div>
+                    <p>Best price for rental in Cyprus! Super fast response via WhatsApp. Will rent again next year definitely.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Кнопка Все отзывы -->
+        <div class="btn-center-container">
+            <button class="btn-secondary" id="toggleReviewsBtn" onclick="toggleReviews()">Все отзывы</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 KBD Scooters Cyprus. Продажа, Прокат, Сервис.</p>
+    </footer>
+
+    <!-- Скрипт для раскрытия отзывов -->
+    <script>
+        function toggleReviews() {
+            var moreReviews = document.getElementById("moreReviews");
+            var btn = document.getElementById("toggleReviewsBtn");
+
+            if (moreReviews.classList.contains("show")) {
+                moreReviews.classList.remove("show");
+                btn.innerHTML = "Все отзывы";
+            </div> else {
+                moreReviews.classList.add("show");
+                btn.innerHTML = "Скрыть часть";
+            }
+        }
+    </script>
+
+</body>
+</html>
